@@ -36,7 +36,7 @@ How to use it
 
 After installing just run:
 
-    generate_kaggle_submission.py samr/data/model2.json > submission.csv
+    time generate_kaggle_submission.py samr/data/model2.json > submission.csv
 
 And that will generate a Kaggle submission file that scores near `0.65844` on the
 [leaderboard](http://www.kaggle.com/c/sentiment-analysis-on-movie-reviews/leaderboard)
@@ -85,8 +85,13 @@ Installation
 If you know the drill, this should be enough:
 
     git clone https://github.com/rafacarrascosa/samr.git
-    pip install -e samr -r samr/docs/setup/requirements-dev.txt
-    download_3rdparty_data.py
+    sudo pip install -e samr -r samr/docs/setup/requirements-dev.txt
+    sudo pip install -e samr -r samr/docs/setup/requirements.txt
+    python3.3 -m venv venv
+    source venv/bin/activate
+    echo 'PATH="$VIRTUAL_ENV/local/bin:$PATH"; export PATH' >> venv/bin/activate
+    source venv/bin/activate
+    python ./samr/scripts/download_3rdparty_data.py
 
 Then you will need to **manually download** `train.tsv` and `test.tsv` from the
 competition's [data folder](http://www.kaggle.com/c/sentiment-analysis-on-movie-reviews/data)
