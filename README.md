@@ -100,10 +100,10 @@ break in the future.
 If the short instructions are not enough, read on.
 
 
-### Full instructions for Ubuntu
+### Full instructions for Ubuntu 14.04 LTS 64-bit
 
 These instructions will install the development version of `samr` inside a
-Python 3.3 virtualenv and were thought for a blank, vanilla Ubuntu 14.04 and
+Python 3.3 virtualenv and were thought for a blank, vanilla Ubuntu 14.04 LTS 64-bit and
 tested using [Docker](https://www.docker.com/) (awesome tool btw). They should
 work more or less unchanged with other Ubuntu versions and Debian-based OSs.
 
@@ -118,19 +118,21 @@ Install python 3.3 and compilation requirements for numpy and scipy:
     sudo apt-get update
     sudo apt-get install -y python3.3 python3.3-dev python-scipy gfortran libopenblas-dev liblapack-dev git wget
 
-Create virtualenv and bootstrap pip:
+Create virtualenv:
 
     python3.3 -m venv venv
     source venv/bin/activate
-    wget https://bootstrap.pypa.io/get-pip.py
-    python3.3 get-pip.py
     echo 'PATH="$VIRTUAL_ENV/local/bin:$PATH"; export PATH' >> venv/bin/activate
     source venv/bin/activate
 
 Clone and install samr:
 
+    sudo apt-get update
+    sudo apt-get install python-pip
+    pip list
     git clone https://github.com/rafacarrascosa/samr.git
-    pip install -e samr -r samr/docs/setup/requirements-dev.txt
+    sudo pip install -e samr -r samr/docs/setup/requirements-dev.txt
+    sudo pip install -e samr -r samr/docs/setup/requirements.txt
     download_3rdparty_data.py
 
 Optionally run the tests:
