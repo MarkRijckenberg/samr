@@ -121,6 +121,7 @@ Install python 3.3 and compilation requirements for numpy and scipy:
 
 Clone and install samr using python2.7 and download third party data using python3.3:
 
+    cd
     sudo apt-get update
     sudo apt-get install python-pip
     pip list
@@ -137,6 +138,7 @@ Optionally run the samr/tests below using python2.7.
 Make sure to close all open Terminal windows and then open a single, new Terminal window to 
 run the command below:
 
+    cd
     nosetests samr/tests
 
 Lastly, you will need to   **manually download** `train.tsv` and `test.tsv` from the
