@@ -116,16 +116,10 @@ Install python 3.3 and compilation requirements for numpy and scipy:
     sudo apt-get install -y software-properties-common
     sudo add-apt-repository -y ppa:fkrull/deadsnakes
     sudo apt-get update
-    sudo apt-get install -y python3.3 python3.3-dev python-scipy gfortran libopenblas-dev liblapack-dev git wget
+    sudo apt-get install -y python-nltk python2.7 python2.7-dev python3.3 python3.3-dev 
+    sudo apt-get install -y python-scipy gfortran libopenblas-dev liblapack-dev git wget
 
-Create virtualenv:
-
-    python3.3 -m venv venv
-    source venv/bin/activate
-    echo 'PATH="$VIRTUAL_ENV/local/bin:$PATH"; export PATH' >> venv/bin/activate
-    source venv/bin/activate
-
-Clone and install samr:
+Clone and install samr using python2.7 and download third party data using python3.3:
 
     sudo apt-get update
     sudo apt-get install python-pip
@@ -133,9 +127,15 @@ Clone and install samr:
     git clone https://github.com/rafacarrascosa/samr.git
     sudo pip install -e samr -r samr/docs/setup/requirements-dev.txt
     sudo pip install -e samr -r samr/docs/setup/requirements.txt
-    download_3rdparty_data.py
+    python3.3 -m venv venv
+    source venv/bin/activate
+    echo 'PATH="$VIRTUAL_ENV/local/bin:$PATH"; export PATH' >> venv/bin/activate
+    source venv/bin/activate
+    python ./samr/scripts/download_3rdparty_data.py
 
-Optionally run the tests:
+Optionally run the samr/tests below using python2.7.
+Make sure to close all open Terminal windows and then open a single, new Terminal window to 
+run the command below:
 
     nosetests samr/tests
 
